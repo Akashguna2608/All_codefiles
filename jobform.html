@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .txt-center {
+            text-align: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .col-1-3 {
+            flex: 0 0 33%
+        }
+
+        .col-5 {
+            flex: 0 0 41.66%;
+        }
+
+        .col-6 {
+            flex: 0 0 50%;
+        }
+
+        .col-8 {
+            flex: 0 0 66.66%;
+
+        }
+
+        .col-10 {
+            flex: 0 0 83.33%
+        }
+
+        .col-11 {
+            flex: 0 0 91.66%;
+        }
+
+        .col-12 {
+            flex: 0 0 100%;
+        }
+
+        .form {
+            padding: 20px 0px 20px 0px;
+            font-size: 30px;
+            color: darkorange;
+        }
+
+        .job {
+            justify-content: flex-start;
+            margin: 20px 0px 10px 20px;
+            font-size: 28px;
+            color: darkgray;
+        }
+
+        .content {
+            padding: 0px 0px 30px 20px;
+            font-size: 18px;
+
+        }
+
+        hr {
+            margin-bottom: 20px;
+        }
+
+        .text {
+            margin: 0px 0px 40px 20px;
+        }
+
+        .name {
+            font-size: 18px;
+            margin: 0px 0px 10px 20px;
+            color: brown;
+        }
+
+        .col-1-3>input[type="text"] {
+            width: 95%;
+            height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid lightgray;
+            outline: none;
+            border-radius: 4px;
+            color: black;
+        }
+
+        .col-1-3>input[type="text"]:focus {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        .col-1-3>input[type="text"]:hover {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+
+
+        .date {
+            margin: 0px 0px 30px 20px;
+        }
+
+        select {
+            width: 95%;
+            height: 40px;
+            border-radius: 4px;
+            border: 1px solid lightgray;
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        select:focus {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        select:hover {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        .birth {
+            margin: 0px 0px 10px 20px;
+            font-size: 18px;
+            color: brown;
+        }
+
+        input[type="date"] {
+            width: 60%;
+            height: 40px;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid lightgray;
+            outline: none;
+            cursor: pointer;
+        }
+
+        input[type="date"]:focus {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        input[type="date"]:hover {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        .gender-h {
+            margin: 0px 0px 20px 20px;
+            font-size: 18px;
+            color: brown;
+        }
+
+        .gender>.male {
+            margin: 0px 0px 10px 20px;
+            cursor: pointer;
+        }
+
+        .gender>.female {
+            margin: 0px 0px 10px 30px;
+            cursor: pointer;
+        }
+
+        .err1 {
+            color: red;
+        }
+
+        .err2 {
+            color: red
+        }
+
+        .err3 {
+            color: red
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .p-l {
+            padding-left: 20px;
+        }
+
+        .address {
+            font-size: 18px;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: brown;
+        }
+
+        .col-10>input[type="text"] {
+            width: 95%;
+            height: 40px;
+            border-radius: 4px;
+            border: 1px solid lightgray;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .col-10>input[type="text"]:focus {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        .col-10>input[type="text"]:hover {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        .street {
+            margin: 0px 0px 30px 20px;
+        }
+
+        .col-l-6>input[type="text"] {
+            width: 91%;
+            height: 40px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid lightgray;
+            outline: none;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .col-l-6>input[type="text"]:focus {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        .col-l-6>input[type="text"]:hover {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        .city {
+            margin: 0px 0px 30px 20px;
+        }
+
+        .email {
+            margin: 0px 0px 10px 20px;
+            font-size: 18px;
+            color: brown;
+        }
+
+        .email-box {
+            margin: 0px 0px 30px 20px;
+        }
+
+        .phone {
+            margin-bottom: 5px;
+        }
+
+        .phone>input[type="text"] {
+            width: 90%;
+            height: 40px;
+            border-radius: 4px;
+            outline: none;
+            border: 1px solid lightgray;
+            padding: 10px;
+            font-size: 15px;
+        }
+
+        .phone>input[type="text"]:focus {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        .phone>input[type="text"]:hover {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        .position {
+            margin: 0px 0px 5px 20px;
+            font-size: 18px;
+            color: brown;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        .valid-mail {
+            font-size: 16px;
+            color: red;
+        }
+
+        .m-b {
+            margin-bottom: 20px;
+        }
+
+        .resume {
+            font-size: 20px;
+            color: brown;
+            margin: 0px 0px 20px 20px;
+        }
+
+        .file {
+            margin: 0px 0px 40px 20px;
+        }
+
+        [name="files"] {
+            width: 70%;
+        }
+
+        .submit {
+            float: right;
+            padding: 0px 50px 30px 0px;
+
+        }
+
+        .p-b {
+            padding-bottom: 100px;
+        }
+
+        input[type="submit"] {
+            padding: 8px;
+            border-radius: 4px;
+            outline: none;
+            font-size: 14px;
+            border: 1px solid black;
+            background-color: dimgray;
+            color: white;
+            
+        }
+        
+
+        input[type="submit"]:hover {
+            border: 1px solid black;
+            outline: 1px solid black;
+            outline-offset: 2px;
+            box-shadow: 0 0 10px dimgray ;
+        }
+
+        input[type="submit"]:visited {
+            border: 1px solid black;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        @media (min-width:280px) and (max-width:912px) {
+            .col-s-11 {
+                flex: 0 0 91.66%;
+                margin-right: 9px;
+            }
+        }
+
+        @media (max-width:819px) {
+            .col-md-12 {
+                flex: 0 0 100%;
+                margin-bottom: 15px;
+            }
+
+           
+
+            .col-lr-6 {
+                flex: 0 0 50%;
+            }
+
+            .col-l-6>input[type="text"] {
+                width: 95%;
+            }
+
+            .col-l-6 {
+                margin-bottom: 20px;
+            }
+            input[type="date"]{
+                width: 80%;
+                font-size: 15px;
+            }
+
+        }
+
+        @media (min-width:820px) {
+            .col-l-6 {
+                flex: 0 0 50%;
+            }
+
+            .col-lg-6 {
+                flex: 0 0 33.33%;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row justify-center">
+        <div class="col-8 p-b col-s-11">
+            <div class="row">
+                <div class="col-12">
+                    <form id="form" name='form'>
+                        <div class="row">
+                            <div class="col-12 txt-center  form">
+                                Employee Application form
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <fieldset>
+                                    <div class="row job">
+                                        <div class="col-12 ">
+                                            Job Application
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-s-11 content">
+                                            Please complete the form below to apply for a position with us.
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class=col-12>
+                                            <div class="row name">
+                                                Full Name
+                                            </div>
+                                            <div class="row text">
+                                                <div class="col-10 ">
+                                                    <div class="row">
+                                                        <div class="col-1-3 col-md-12 col-lg-6">
+                                                            <input type="text" id="text1" name="text1" required>
+                                                            Firstname
+                                                            <div class="err1 d-none" id="errr1"><i>Enter Valid name</i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1-3 col-md-12 col-lg-6">
+                                                            <input type="text" id="text2" required>
+                                                            Middlename
+                                                            <div class="err2 d-none" id="errr2" name="text2">
+                                                                <i>Enter Valid name</i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1-3 col-md-12 col-lg-6">
+                                                            <input type="text" id="text3" name="text3" required>
+                                                            Lastname
+                                                            <div class="err3 d-none" id="errr3"><i>Enter Valid name</i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 b-date">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="birth">
+                                                        Birth Date
+                                                    </div>
+                                                    <div class="birth">
+                                                        <input type="date" name="date" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 ">
+                                                    <div class="gender-h">
+                                                        Gender
+                                                    </div>
+                                                    <div class="gender">
+                                                        <input class="male" type="radio" name="gender" value="Male"
+                                                            required>Male
+                                                        <input class="female" type="radio" name="gender" value="Female"
+                                                            required>Female
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 address">
+                                            Current Address
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10 street">
+                                            <input type="text" name="address" required>
+                                            Street Address
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10 street">
+                                            <input type="text" name="address1">
+                                            Street Address line 2
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10 city city-md">
+                                            <div class="row">
+                                                <div class="col-l-6 col-12">
+                                                    <input type="text" name="city" id="city" required>
+                                                    City
+                                                </div>
+                                                <div class="col-l-6 col-12">
+                                                    <input type="text" name="state" id="state" required>
+                                                    State / Province
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10 email">
+                                            <div class="row">
+                                                <div class="col-l-6 col-12">
+                                                    <div class="phone m-b"> Email Address</div>
+                                                    <div class="phone">
+                                                        <input type="text" id="emails" name="mail"
+                                                            placeholder="ex:myname@example.com" required>
+                                                    </div>
+                                                    <div class="valid-mail d-none" id="validmail">
+                                                        <i>Enter a valid mailid</i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-l-6 col-12">
+                                                    <div class="phone m-b"> Phone Number</div>
+                                                    <div class="phone">
+                                                        <input type="text" id="number" name="number"
+                                                            placeholder="(000) 000-0000" maxlength="10" required>
+                                                    </div>
+                                                    <div class="valid-mail d-none" id="p-number">
+                                                        <i>Enter a valid Phone number</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10 m-b">
+                                            <div class="row">
+                                                <div class="col-6 col-md-12">
+                                                    <div class="position m-b">
+                                                        Position Applied
+                                                    </div>
+                                                    <div class="position">
+                                                        <select id="position" required>
+                                                            <option value="">Please Select</option>
+                                                            <option Value="Marketing Specialist">Marketing Specialist
+                                                            </option>
+                                                            <option value="Sales Manager"> Sales Manager</option>
+                                                            <option value="Product Lead">Product Lead</option>
+                                                            <option value="Developer">Developer</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-md-12">
+                                                    <div class="position m-b">
+                                                        How did you hear about us
+                                                    </div>
+                                                    <div class="position">
+                                                        <select id="find" required>
+                                                            <option value="">Please Select</option>
+                                                            <option value="Linkedin">Linkedin</option>
+                                                            <option value="Social media">Social media</option>
+                                                            <option value="Event">Event</option>
+                                                            <option value="Company website">Company website</option>
+                                                            <option value="Famiy/Friend">Famiy/Friend</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="row resume">
+                                                Upload you resume
+                                            </div>
+                                            <div class="row file">
+                                                <input type="file" name="files" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row submit">
+                                        <input type="submit">
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function onlyLetter(fieldLocator, errorLocator) {
+            var letters = /^[a-zA-Z ]*$/;
+            if (document.getElementById(fieldLocator).value.match(letters)) {
+                document.getElementById(errorLocator).classList.add("d-none");
+            }
+            else {
+                document.getElementById(errorLocator).classList.remove("d-none");
+            }
+        }
+        document.getElementById("text1").addEventListener("input", function () {
+            onlyLetter("text1", "errr1")
+        })
+        document.getElementById("text2").addEventListener("input", function () {
+            onlyLetter("text2", "errr2")
+        })
+        document.getElementById("text3").addEventListener("input", function () {
+            onlyLetter("text3", "errr3")
+        })
+        document.getElementById("number").addEventListener("input", validPhoneNumber)
+        function validPhoneNumber() {
+            var numbers = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+            if (document.getElementById("number").value.match(numbers)) {
+                document.getElementById("p-number").classList.add("d-none");
+            }
+            else {
+                document.getElementById("p-number").classList.remove("d-none");
+            }
+        }
+
+        document.getElementById("emails").addEventListener("input", validEmail)
+        function validEmail() {
+            var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (document.getElementById("emails").value.match(mail)) {
+                document.getElementById("validmail").classList.add("d-none");
+            }
+            else {
+                document.getElementById("validmail").classList.remove("d-none");
+            }
+        }
+
+        document.getElementById("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var firstName = document.forms["form"]["text1"].value;
+            var middleName = document.forms["form"]["text2"].value;
+            var lastName = document.forms["form"]["text3"].value;
+            var date = document.forms["form"]["date"].value;
+            var gender = document.forms["form"]["gender"].value;
+            var address = document.forms["form"]["address"].value;
+            var address1 = document.forms["form"]["address1"].value;
+            var city = document.forms["form"]["city"].value;
+            var state = document.forms["form"]["state"].value;
+            var mail = document.forms["form"]["mail"].value;
+            var number = document.forms["form"]["number"].value;
+            var position = document.forms["form"]["position"].value;
+            var where = document.forms["form"]["find"].value;
+            var file = document.forms["form"]["files"].value;
+
+            if (document.forms["form"]["address1"].value) {
+                console.log({
+                    name: firstName + " " + middleName + " " + lastName,
+                    Birthdate: date,
+                    Gender: gender,
+                    Address: address,
+                    Address2: address1,
+                    City: city,
+                    State: state,
+                    Email: mail,
+                    Phonenumber: number,
+                    Position: position,
+                    Where: where,
+                    Resume: file
+                })
+            }
+            else {
+                console.log({
+                    name: firstName + " " + middleName + " " + lastName,
+                    Birthdate: date,
+                    Gender: gender,
+                    Address: address,
+                    City: city,
+                    State: state,
+                    Email: mail,
+                    Phonenumber: number,
+                    Position: position,
+                    Where: where,
+                    Resume: file
+                })
+            }
+        }
+
+        )
+    </script>
+</body>
+
+</html>
