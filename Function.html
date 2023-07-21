@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        biriyani amount<input id="amount" type="text">
+
+        Discount<input id="percen" type="text">
+
+    </div>
+    <div>
+        <button id="calc">Calculate</button>
+        value<input id="val" type="text">
+    </div>
+    <script>
+
+        var d = document.getElementById("val");
+        var c = document.getElementById("calc");
+        c.addEventListener("click", payamount);
+        function payamount() {
+            var a = document.getElementById("amount").value;
+            var b = document.getElementById("percen").value;
+
+            d.value = (a * (100 - b)) / 100;
+
+
+
+
+            var input = 68;
+            var storage_coins1 = 10;
+            var storage_coins2 = 5;
+            var storage_coins3 = 2;
+            var storage_coins4 = 1;
+            var Ten_rubees = input / storage_coins1;
+            var Ten = parseInt(Ten_rubees);
+            var five_rubees = input % storage_coins1;
+            var five = five_rubees / storage_coins2;
+            var Five = parseInt(five);
+            var two_rubees = five_rubees % storage_coins2;
+            var two = two_rubees / storage_coins3
+            var Two = parseInt(two);
+            var onerubees = two_rubees % storage_coins3;
+            var one = onerubees / storage_coins4;
+            var One = parseInt(onerubees);
+            var coins = Ten + Five + Two + One;
+            console.log(coins);
+        }
+        function given_amount(amount) {
+            var coins = [10, 5, 2, 1];
+            var coinscount = 0;
+
+            for (var i = 0; i < coins.length; i++) {
+                coinscount += parseInt(amount / coins[i]);
+                amount = amount % coins[i];
+            }
+            return (coinscount);
+        }
+        function print(n) {
+            var number = "";
+            var count = 1;
+            for (var i = 1; i < n; i++) {
+                for (var j = 1; j < i * 2; j++) {
+                    if (i === 1) {
+                        number += count;
+                        count = count + 1;
+                    }
+                    else {
+                        if (j % 2 === 1) {
+                            number += count;
+                            count = count + 1;
+                        }
+                        else {
+                            number += "*"
+                        }
+                    }
+                }
+                number += "\n";
+            }
+            count = count - 1
+            for (var i = n - 1; i > 0; i--) {
+                var numbers = "";
+                for (var j = 1; j < i * 2; j++) {
+                    if (i === 1) {
+                        numbers += count;
+                        count = count - 1;
+                    }
+                    else {
+                        if (j % 2 === 1) {
+                            numbers += count;
+                            count = count - 1;
+                        }
+                        else {
+                            numbers += "*";
+                        }
+                    }
+                }
+                numbers = numbers.split("*").reverse().join("*");
+                number += numbers;
+                number += "\n";
+            }
+            console.log(number);
+        }
+
+
+
+        function print(n) {
+            var number = "";
+            var count = 1;
+            for (var i = 1; i < n; i++) {
+                for (var j = 1; j < i * 2; j++) {
+                    if (i === 1) {
+                        number += count;
+                        count = count + 1;
+                    }
+                    else {
+                        if (j % 2 === 1) {
+                            number += count;
+                            count = count + 1;
+                        }
+                        else {
+                            number += "*"
+                        }
+                    }
+                }
+                number += "\n";
+            }
+            count = count - 1
+            for (var i = 1; i < n; i++) {
+                var numbers = "";
+                for (var j = 1; j <= 2 * (n - i) - 1; j++) {
+                    if (j % 2 === 1) {
+                        numbers += count;
+                        count = count - 1;
+                    }
+                    else {
+                        numbers += "*"
+                    }
+                }
+                numbers = numbers.split("*").reverse().join("*");
+                number += numbers;
+                number += "\n";
+            }
+            console.log(number);
+        }
+        // count('12323*3*3*3*')
+        function totalCount(string) {
+            var sum = "";
+            var total = 0;
+            sum = string.split("*");
+            console.log(sum)
+            for (var i = 0; i < sum.length; i++) {
+                total += parseInt(sum[i]);
+            }
+            return total;
+            console.log(total);
+        }
+
+        // ([1,2,3,4,4],4) How many times is there
+        function star(input, x) {
+            var count = 0;
+            for (var i = 0; i < input.length; i++) {
+                if (input[i] == x) {
+                    count += 1
+                }
+            }
+            return count;
+        }
+
+        // PairValue('111223344433')
+        function pairValue(input) {
+            var count = 0;
+            for (var i = 0; i < input.length; i++) {
+                if (inpu[i - 1] != input[i] && input[i] == input[i + 1] && input[i + 1] != input[i + 2]) {
+                    count += 1
+                }
+            }
+            return count;
+        }
+
+        function sum(n, string) {
+            var star = "";
+            var count = 0;
+            for (var i = 0; i < string.length; i++) {
+
+                if (string[i] === n) {
+                    star = string[i];
+                }
+                else {
+                    count += parseInt(string[i].concat(string[i + 1]))
+                    i++;
+                }
+            }
+            return count;
+        }
+
+        // reverseString('akash')
+        function reverse(string) {
+            var givenName = 'madam';
+            var output = "";
+
+            for (var i = string.length - 1; i >= 0; i--) {
+                givenName += string[i];
+                if (string == givenName) {
+                    output = true;
+                }
+                else {
+                    output = false;
+                }
+            }
+            return output;
+
+        }
+
+        // given number is there count
+        function letter(x, string) {
+            var count = 0;
+            for (var i = 0; i < string.length; i++) {
+                if (string[i] == x) {
+                    count += 1;
+                }
+            }
+            return count;
+        }
+
+// 
+        function diagonalDifference(arr) {
+            // Write your code here
+
+
+            var sum1 = 0;
+            var sum2 = 0;
+            var sum = 0
+            for (var i = 0; i < arr.length; i++) {
+
+                for (var j = 0; j < arr.length; j++) {
+
+                    if (arr[i] == arr[j]) {
+                        sum1 += arr[i][j];
+                    }
+                    if (arr.length - 1 - i == arr[j]) {
+                        sum2 += arr[i][j];
+                    }
+                }
+            }
+            sum = sum2 - sum1;
+            return sum;
+        }
+
+        function numberOfPlace(rank, input) {
+            var temp = 0;
+            var mark = 0
+            for (var i = 0; i < input.length; i++) {
+                for (var j = i; j < input.length; j++) {
+                    if (input[j] < input[i]) {
+                        var acending = input[j];
+                        input[j] = input[i];
+                        input[i] = acending
+                    }
+                }
+            }
+            temp = input.length - rank;
+            mark = input[temp];
+            console.log(mark);
+        }
+        numberOfPlace(2, [2, 3, 4, 5, 6, 2, 3, 4, 544, 555, 66]);
+
+        // star pattern
+        function starPattern(n) {
+            var string = "";
+            for (var i = 0; i < n; i++) {
+                for (var j = 0; j < 2 * n; j++) {
+                    string += " ";
+                }
+                string += "\n";
+            }
+            for (var i = 0; i < n; i++) {
+                for (var k = 0; k < i + 1; k++) {
+                    string += " ";
+                }
+                for (var j = 0; j < (2 * n) - (i * 2); j++) {
+
+                    if (j % 2 == 0) {
+                        string += "*"
+                    }
+                    else {
+                        string += " ";
+                    }
+                }
+                string += "\n"
+            }
+            console.log(string)
+        }
+
+
+        function starPattern(n) {
+            var number = "";
+            for (var i = 0; i < n; i++) {
+                for (var j = 0; j < i + 1; j++) {
+                    number += " ";
+                }
+                for (var k = 0; k < (2 * n) - (i * 2); k++) {
+                    if (k % 2 == 0) {
+                        number += "*"
+                    }
+                    else {
+                        number += " ";
+                    }
+                }
+                number += "\n";
+            }
+            for (var i = 0; i < n; i++) {
+                for (var j = 0; j < n - i; j++) {
+                    number += " ";
+                }
+                for (var k = 0; k <= i * 2; k++) {
+                    if (k % 2 == 0) {
+                        number += "*";
+                    }
+                    else {
+                        number += " ";
+
+                    }
+                }
+                number += "\n";
+            }
+            console.log(number)
+        }
+
+        function starPattern(n) {
+            var number = "";
+            for (var i = 0; i < n; i++) {
+                for (var j = 0; j < n - i; j++) {
+                    number += " ";
+                }
+                for (var k = 0; k <= i * 2; k++) {
+                    if (k % 2 == 0) {
+                        number += "*";
+                    }
+                    else {
+                        number += " ";
+                    }
+                }
+                number += "\n";
+            }
+            for (var i = 1; i < n; i++) {
+                for (var j = 0; j < i; j++) {
+                    number += " ";
+                }
+                for (var k = 0; k < (2 * n) - (i * 2); k++) {
+                    if (k % 2 == 1) {
+                        number += "*"
+                    }
+                    else {
+                        number += " ";
+                    }
+                }
+                number += "\n";
+            }
+            console.log(number)
+        }
+
+        function sumAllNumbers(input) {
+            var sum = 0;
+            var number = '';
+            for (var i = 0; i < input.length; i++) {
+                if (input[i] === '*') {
+                    if (number != "") {
+                        sum += parseInt(number);
+                        number = '';
+                    }
+                } else {
+                    number += input[i];
+                }
+            }
+            if (number != "") sum += parseInt(number);
+            return sum;
+        }
+
+        sumAllNumbers("1*111*23*3554*1");
+
+        function reverseUseSplit(input) {
+            input = input.split(" ");
+            var b = [];
+            for (var i = 0; i < input.length; i++) {
+                for (var j = input[i].length - 1; j >= 0; j--) {
+                    b += input[i][j];
+                }
+                b += " ";
+            }
+            return b;
+        }
+        // countpair
+        function countOfPair(input) {
+            var count = 0;
+            for (var i = 0; i < input.length; i++) {
+                if (input[i - 1] != input[i] && input[i] == input[i + 1] && input[i + 1] != input[i + 2]) {
+                    count += 1;
+                }
+            }
+            return count;
+        }
+        countOfPair("111223344333");
+
+        // removePair
+        function removePair(input) {
+            input = input.split('')
+            for (var i = 0; i < input.length; i++) {
+                if (input[i - 1] != input[i] && input[i] == input[i + 1] && input[i + 1] != input[i + 2]) {
+                    input.splice(i, 2)
+                }
+            }
+            return input = input.join('')
+        }
+        removePair("hello")
+
+        function countNumbeers(input) {
+            var sum = 0;
+            var number = "";
+            for (var i = 0; i < input.length; i++) {
+                if (input[i] >= 0 && input[i] <= 9) {
+                    number += input[i];
+
+                }
+                else {
+                    if (number != "") {
+                        sum += parseInt(number);
+                        number = "";
+                    }
+                }
+
+            }
+            if (number != "") sum += parseInt(number)
+            return sum;
+        }
+        countNumbers("11sdfg1231hgjd")
+
+check if the given phase is rhyming "Tic Tac Toe" true, "Akash Guna" false
+
+        function checkIfRhymingWord(input) {
+            var array = input.split(' ');
+            var output = true;
+            for (var i = 0; i < array.length; i++) {
+                if (input[0] !== array[i][0]) {
+                    output = false;
+                }
+            }
+            return output;
+        }
+
+        checkIfRhymingWord("Tic Tac Toe");
+
+check given string is palindrome input 'madam' true, 'cap' false
+
+        function checkIfPalindrome(input) {
+            var reverseString = '';
+
+            for (var i = input.length - 1; i >= 0; i--) {
+                reverseString += input[i];
+            }
+            return reverseString === input;
+        }
+
+        checkIfPalindrome('madam');
+
+        // sum of characters in a string, "Akash" => a - 2, k - 1, s - 1, h - 1
+        function sumOfCharacters(input) {
+            input = input.toLowerCase();
+            var output = {};
+
+            for (var i = 0; i < input.length; i++) {
+                if (output[input[i]]) {
+                    output[input[i]] += 1;
+                } else {
+                    output[input[i]] = 1;
+                }
+            }
+            for (var i = 0; i < Object.keys(output).length; i++) {
+                console.log(Object.keys(output)[i], ' - ', Object.values(output)[i], '\n');
+            }
+        }
+
+        sumOfCharacters("Akash")
+        // get maximum occured characters in a string "akash", a => output, "sssyyy" => "s"
+
+        function getMaxOccurences(input) {
+            input = input.toLowerCase();
+            var output = {};
+
+            for (var i = 0; i < input.length; i++) { 
+                if (output[input[i]]) {
+                    output[input[i]] += 1;
+                } else {
+                    output[input[i]] = 1;
+                }
+            }
+
+            // output -> {a: 2, k: 1, s: 1, h: 1}
+            // Object.values(output) -> [2,1,1,1]
+            // Object.keys(output) -> ['a', 'k', 's', 'h']
+            var max = 0;
+            var maxIndex = 0;
+            for (var i = 0; i < Object.values(output).length; i++) {
+                if (max < Object.values(output)[i]) {
+                    max = Object.values(output)[i];
+                    maxIndex = i;
+                }
+            }
+            return Object.keys(output)[maxIndex];
+        }
+
+        getMaxOccurences("Akash");
+
+
+        function unicValues(input) {
+            var arr = [];
+            for (var i = 0; i < input.length; i++) {
+                if (arr.includes[input[i]] === false) {
+                    arr.push(input[i])
+                }
+            }
+            return arr;
+        }
+
+        function unicValues(input) {
+            input = input.toLowerCase();
+            var string = "";
+            for (var i = 0; i < input.length; i++) {
+                if (string.includes(input[i]) == false) {
+                    string += input[i]
+                }
+            }
+            return string;
+        }
+
+        function acendingCharacter(input) {
+            input = input.toLowerCase();
+            var arr = [];
+            var string = "";
+            for (var i = 0; i < input.length; i++) {
+                arr.push(input.charCodeAt([i]));
+            }
+            for (var i = 0; i < arr.length; i++) { }
+            for (var j = 0; j < arr.length; j++) {
+                if (arr[i] < arr[j])
+                    var acending = arr[j];
+                arr[j] = arr[i];
+                arr[i] = acending;
+            }
+            for (var i = 0; i < arr.length; i++) {
+                string += String.fromCharCode(arr[i])
+            }
+            return arr;
+        }
+
+        // input new date convert exact month &Days
+
+
+        function convertDate(input) {
+            var allMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            getMonth = allMonths[new Date(input).getMonth()];
+            getDay = weekDays[new Date(input).getDay()];
+            getDate = new Date(input).getDate();
+            getYear = new Date(input).getFullYear();
+            // console.log (getMonth,getDate,getDays,"-",getYear);
+            console.log(`${getMonth} ${getDate} ${getDay} - ${getYear}`);
+        }
+
+        // If the given string is leap year or not
+
+        function leapYear(year) {
+            var leap = new Date(year, 1, 29).getDate();
+            var output = false;
+            if (leap == 29) {
+                output = true;
+            }
+            consol.log(output);
+        }
+
+        // calculate the age
+
+
+        // calaculateage ("26-03-2023")
+        function calculateAge(userBirthday) {
+            var age = new Date().getFullYear() - new Date(userBirthday).getFullYear();
+
+            if (new Date().getMonth() < new Date(userBirthday).getMonth() || new Date().getMonth() == new Date(userBirthday).getMonth() && new Date().getDate() < new Date(userBirthday).getDate()) {
+                age--;
+            }
+            return age;
+        }
+        // calcualte after 40 days in current date 
+        function calculatedate(days) {
+            var date = new Date(new Date().setDate(new Date().getDate() + days));
+            return date;
+        }
+
+        //number of days count in the given date
+
+        function numberOfDays(date1, date2) {
+            var oneDay = 24 * 60 * 60 * 1000;
+            var firstDate = new Date(date1);
+            var secondDate = new Date(date2);
+            var diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+            return diffDays;
+        }
+
+        // count number of minth in given date
+        function countMonth(curentDate, userDate) {
+            var month;
+            month = (new Date(curentDate).getFullYear() - new Date(userDate).getFullYear()) * 12;
+            month -= new Date(curentDate).getMonth() - new Date(userDate).getMonth();
+            return month <= 0 ? 0 : month;
+        }
+        // Find max of characters
+        function maxOfCharacter(input) {
+            input = input.toLowerCase();
+            var obj = {};
+
+            for (var i = 0; i < input.length; i++) {
+                obj[input[i]] = obj[input[i]] ? obj[input[i]] + 1 : 1;
+                // if (obj[input[i]]) {
+                //     obj[input[i]] += 1;
+                // }
+                // else {
+                //     obj[input[i]] = 1;
+                // }
+            }
+            var maxCount = 0;
+            var maxOccuredCharacter = 0;
+            for (var i = 0; i < Object.values(obj).length; i++) {
+                if (maxCount < Object.values(obj)[i]) {
+                    maxCount = Object.values(obj)[i];
+                    maxOccuredCharacter = Object.keys(obj)[i]
+                }
+            }
+            return maxOccuredCharacter;
+        }
+
+        // forEach using ** iterate
+
+        var input = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var output = [];
+        input.forEach(function (a) {
+            input % 2 == 1 ? output.push(a) : null;
+        })
+
+        // Filter using only return true
+
+        var input = [1, 2, 3, 4, 5, 6, 7];
+        input.filter(function (a) {
+            return a % 2 == 1
+        })
+        output
+
+        // Arrow fuction in forEach
+
+        var input = [1, 2, 3, 4, 5, , 6, 7, 8];
+        var output = [];
+        input.forEach((a) => a % 2 == 1 ? output.push(a) : null);
+        output;
+
+        // filter using arrow function;
+        var input = [1, 2, 3, 4, 5, 6, 7];
+        input.filter((a) => a % 2 == 1);
+
+        // spread operator
+        [[1, 2, 3, 4, 5]...[1, 2, 3, 4]] it will be retun 1st array ifs fully in 0th index, another array speartely
+
+        //  arrow function (=>)**
+        // one line statement
+        // check if oneline statement
+        // default parameter in function
+        // includes using array string
+        // String.charCodeForm(97) "string"
+        // find
+
+        // find duplicate value in array
+        // var input = [1000, 2, 3, 4, 5, 1, 2, 3, 4];
+        function findUniqValue(input) {
+            var output = [];
+            var uniqueValues = [];
+            var unicValues = [];
+            for (var i = 0; i < input.length; i++) {
+                if (output.includes(input[i])) {
+                    uniqueValues.push(input[i])
+
+                }
+                else {
+                    output.push(input[i]);
+                }
+            }
+            // output = output.slice(1) ;
+            // uniqueValues = uniqueValues.slice(1) ;
+            console.log(output);
+            console.log(uniqueValues);
+        }
+
+        Sum of the given array
+
+        var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var sum = 0;
+        for (var i = 0; i < array.length; i++) {
+            sum = sum + array[i];
+        }
+
+find odd number
+
+        var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 20];
+        var oddnumber = [];
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] % 2 === 1) {
+                oddnumber.push(array[i]);
+            }
+        }
+
+find Even number
+
+        var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var evennumber = [];
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] % 2 === 0) {
+                evennumber.push(array[i]);
+            }
+        }
+
+find maximum number
+        var array = [1, 2, 33, 4, 5, 6, 7, 8, 9];
+        var max = [0];
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+
+find mimimun number
+
+        var array = [1, 2, 3, 4, 5, 6, 7, 8];
+        var min = array[0];
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] < min) {
+                min = array[i];
+
+            }
+        }
+
+find acending order
+
+        var array = [3, 4, 2, 88, 66, 55, 7, 7, 777];
+
+        console.log(i)
+        for (var i = 0; i < array.length; i++) {
+            console.log(j)
+            for (var j = 0; j < array.length; j++) {
+                if (array[j] < array[i]) {
+                    var acending = array[j];
+                    array[j] = array[i];
+                    array[i] = acending;
+                }
+            }
+        }
+        // decending order
+        var array = [2, 333, 4, 5, 6, 2, 322, 2, 1, 66];
+        for (var i = 0; i < array.length; i++) {
+            for (var j = i; j < array.length; j++) {
+                if (array[j] < array[i]) {
+                    var decending = array[j];
+                    array[j] = array[i];
+                    array[i] = decending;
+                }
+            }
+        }
+
+        // acending order in dates
+        function acendingOrderDates(input) {
+            var dates = [];
+            dates.push([new Date(input)])
+            var years = [];
+            var month = [];
+            var date = [];
+            var yearcrt = [];
+            var monthcrt = [];
+            var datecrt = [];
+
+
+            for (var i = 0; i < dates.length; i++) {
+                years.push(dates[i].getFullYear());
+                month.push(dates[i].getMonth());
+                date.push(dates[i].getDate());
+
+                var minYear = [years[0]];
+                var minMonth = [month[0]];
+                var minDate = [date[0]]
+                if (years[i] < minYear) {
+                    minYear = years[i]
+                }
+                if (month[i] < minMonth) {
+                    minMonth = month[i]
+                }
+                if (date[i] < minDate) {
+                    minDate = date[i]
+                }
+            }
+            for (var i = 0; i < dates.length; i++) {
+                if (dates[i].getFullYear() > minYear) {
+                    yearcrt.push(dates[i])
+                }
+                else {
+                    yearcrt.unshift(dates[i])
+                }
+
+
+            }
+            for (var i = 0; i < yearcrt.length; i++) {
+                if (yearcrt[i].getMonth() > minMonth) {
+                    monthcrt.push(yearcrt[i])
+                }
+                else {
+                    monthcrt.unshift(yearcrt[i])
+                }
+            }
+            for (var i = 0; i < monthcrt.length; i++) {
+                if (monthcrt[i].getDate() >= minDate && monthcrt[i].getMonth() == minMonth) {
+                    datecrt.unshift(monthcrt[i])
+                }
+                else {
+                    datecrt.push(monthcrt[i])
+                }
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
