@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP GENERATE</title>
+    <style>
+        .row {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .txt-center {
+            text-align: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .col-12 {
+            flex: 0 0 100%;
+        }
+
+        .col-1-4 {
+            height: 35px;
+            width: 65px;
+            border: 1px solid red;
+            border-radius: 5px;
+            text-align: center;
+            font-family: arimo;
+            font-size: 1.2rem;
+            background: #eef2f3;
+
+        }
+
+        .col-1-4:focus {
+            outline: none;
+        }
+
+        .m-x-y {
+            margin: 20px 0px 20px 0px;
+        }
+
+        .m-y {
+            margin-bottom: 20px;
+        }
+
+        .otp {
+            background-color: antiquewhite;
+            font-size: 20px;
+        }
+
+        .input-box {
+            background-color: antiquewhite;
+
+        }
+
+        .b-r {
+            border-radius: 4px;
+        }
+
+        input[type="password"] {
+            font-size: 50px;
+            line-height: 5px;
+            border: none;
+            padding-bottom: 0px;
+            border-bottom: 1px solid black;
+            outline: none;
+            width: 35px;
+            height: 20px;
+            text-align: center;
+        }
+
+        .b-none {
+            border: none;
+        }
+
+        select {
+            width: 200px;
+            height: 50px;
+            line-height: 10px;
+            font-size: 20px;
+            -webkit-appearance: menulist-button;
+            -moz-appearance: none;
+
+        }
+
+        .container {
+            position: relative;
+            width: 50%;
+            overflow: hidden;
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio */
+        }
+
+        .responsive-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 50%;
+            border: none;
+        }
+
+        .content {
+            position: relative;
+            width: 30%;
+            overflow: hidden;
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio */
+        }
+
+        .content-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 30%;
+            border: none;
+        }
+
+
+        #img-preview {
+            display: none;
+            width: 155px;
+            border: 2px dashed #333;
+            margin-bottom: 20px;
+        }
+
+        #img-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        [type="file"] {
+            height: 0px;
+            width: 0px;
+            overflow: hidden;
+        }
+
+
+        [type="file"]+label {
+            font-family: sans-serif;
+            background: #f44336;
+            padding: 10px 30px;
+            border: 2px solid #f44336;
+            border-radius: 3px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        [type="file"]+label:hover {
+            background-color: #fff;
+            color: #f44336;
+        }
+
+        h1 {
+            color: orangered;
+            font-size: 45px;
+        }
+
+        /* 3*3 Grid */
+        #b1,
+        #b2,
+        #b3,
+        #b4,
+        #b5,
+        #b6,
+        #b7,
+        #b8,
+        #b9 {
+            width: 80px;
+            height: 52px;
+            margin: auto;
+            border: 1px solid gray;
+            border-radius: 6px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        /* Reset Button */
+        #but {
+            box-sizing: border-box;
+            width: 95px;
+            height: 40px;
+            border: 1px solid dodgerblue;
+            margin: auto;
+            border-radius: 4px;
+            font-family: Verdana,
+                Geneva, Tahoma, sans-serif;
+
+            background-color: dodgerblue;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Player turn space */
+        #print {
+            font-family: Verdana,
+                Geneva, Tahoma, sans-serif;
+
+            color: dodgerblue;
+            font-size: 20px;
+        }
+
+        /* Main Container */
+        #main {
+            text-align: center;
+        }
+
+        /* Game Instruction Text */
+        #ins {
+            font-family: Verdana,
+                Geneva, Tahoma, sans-serif;
+
+            color: dodgerblue;
+            font-size: 17px;
+        }
+
+        .dive {
+            width: 50px;
+            height: 50px;
+            border: 1px solid red;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .align {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        input {
+            width: 40px
+        }
+
+        .height {
+            max-height: 150px;
+            border: 2px solid black;
+            overflow-x: scroll;
+        }
+
+        .nam .nam1{
+            background-color: red;
+            color: white;
+            font-size: 10px;
+        }
+        
+        
+       
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1 id = "demo" class ="nam nam1">Akash</h1>
+    <h2 id = "demo">Akash</h2>
+    
+    <div class="height">
+        <div class="col-12 txt-center m-y">
+            <input class="col-1-4 b-r" id="box-1" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-2" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-3" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-4" type="text" maxlength="1">
+        </div>
+        <div class="col-12 txt-center m-y">
+            <input class="col-1-4 b-r" id="box-1" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-2" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-3" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-4" type="text" maxlength="1">
+        </div>
+        <div class="col-12 txt-center m-y">
+            <input class="col-1-4 b-r" id="box-1" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-2" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-3" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-4" type="text" maxlength="1">
+        </div>
+    </div>
+    <a href="FormValid.html" target="_blank">click to go and fill the form section!</a>
+    <div class="row otp">
+        <div class="  col-12 txt-center m-x-y">
+            ENTER OTP
+        </div>
+    </div>
+    <div class="row input-box  txt-center">
+        <div class="col-12 txt-center m-y">
+            <input class="col-1-4 b-r" id="box-1" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-2" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-3" type="text" maxlength="1">
+            <input class="col-1-4 b-r" id="box-4" type="text" maxlength="1">
+        </div>
+    </div>
+    <div class="row otp">
+        <div class="col-12  txt-center m-x-y">
+            ENTER OTP
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 input-box txt-center">
+            <input type="password" id=password1 class="b-none" maxlength="1">
+            <input type="password" id=password2 maxlength="1">
+            <input type="password" id=password3 maxlength="1">
+            <input type="password" id=password4 maxlength="1">
+        </div>
+    </div>
+    <div class="container">
+        <iframe class="responsive-iframe" width="650px" height="350px" src="https://www.youtube.com/embed/ThkPulAAbdk"
+            title="Omni Bus Paavangal | Parithabangal" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+
+    </div>
+    <div class="content">
+        <iframe class="content-iframe"
+            src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d26328.6802275039!2d80.23433203643201!3d13.051756102855093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d13.002221599999999!2d80.2655838!4m5!1s0x3a52655ee709aaad%3A0x8c926d86ba7231a9!2sThe%20Legend%20New%20Saravana%20Stores%2C%2015%2C%20Madras%20Thiruvallur%20High%20Rd%2C%20Padi%2C%20Chennai%2C%20Tamil%20Nadu%20600098!3m2!1d13.1008974!2d80.190206!5e0!3m2!1sen!2sin!4v1681548214131!5m2!1sen!2sin"
+            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+
+    <form>
+        <div>
+            <div id="img-preview"></div>
+            <input type="file" accept="image/*" id="choose-file" name="choose-file" />
+            <label for="choose-file">Choose File</label>
+        </div>
+    </form>
+    <div id="main">
+        <h1>TIC TAC TOE</h1>
+
+        <!-- Game Instructions -->
+        <p id="ins">Game starts by just Tap on
+            box<br><br>First Player starts as
+            <b>Player X</b><br>And<br>Second
+            Player as <b>Player 0</b>
+        </p>
+
+
+
+
+        <br><br>
+        <!-- 3*3 grid of Boxes -->
+        <input type="text" id="b1" onclick="myfunc_3(); myfunc();" readonly>
+
+        <input type="text" id="b2" onclick="myfunc_4(); myfunc();" readonly>
+
+        <input type="text" id="b3" onclick="myfunc_5(); myfunc();" readonly>
+        <br><br>
+
+        <input type="text" id="b4" onclick="myfunc_6(); myfunc();" readonly>
+
+        <input type="text" id="b5" onclick="myfunc_7(); myfunc();" readonly>
+
+        <input type="text" id="b6" onclick="myfunc_8(); myfunc();" readonly>
+        <br><br>
+
+        <input type="text" id="b7" onclick="myfunc_9(); myfunc();" readonly>
+
+        <input type="text" id="b8" onclick="myfunc_10();myfunc();" readonly>
+
+        <input type="text" id="b9" onclick="myfunc_11();myfunc();" readonly>
+
+        <!-- Grid end here  -->
+        <br><br><br>
+        <!-- Button to reset game -->
+        <button id="but" onclick="myfunc_2()">
+            RESET
+        </button>
+
+        <br><br>
+        <!-- Space to show player turn -->
+        <p id="print"></p>
+        <div>
+            <div id="value1">6</div>
+            <div id="value2">4</div>
+            <div id="value3">*</div>
+            <div id="multiply">Multiply</div>
+            <div id="value">Value</div>
+        </div>
+        <div><img class=image src="images.jpg.jfif" width="40%"></div>
+
+    </div>
+    <div class="align">
+        <p> <input type="text">
+            <input type="text">
+            <input type="text">
+        </p>
+    </div>
+    <img src="w3html.gif" alt="W3Schools.com" width="100" height="132">
+    <img src="/search?q=flower+pics&oq=flower+pics&aqs=chrome..69i57j0i512l9.1288150814j0j15&sourceid=chrome&ie=UTF-8#imgrc=t1X5lcWFswI5RM"
+        alt="Beautiful flower">
+    <!-- demo of calling function -->
+    <h1 ida='head'>Practice with calling function</h1>
+    <p id="demo"></p>
+    <button id="btn">Add on</button>
+    <script>
+
+        document.cookie = "username=John Doe";
+
+        $(document).ready(function () {
+            $('#ash').on('click', function () {
+                $('#ash').html("guna")
+            })
+            $("#value1").on("click", function () {
+                var string = "";
+                string += $("#value1").text()
+                $("#multiply").html(string)
+            })
+            $("#value2").on("click", function () {
+
+                string += $("#value2").text()
+
+                $("#multiply").html(string)
+
+            })
+            $("#value3").on("click", function () {
+                string += $("#value3").text()
+                $("#multiply").text(string);
+            })
+            if (($("#multiply").text() == "*")) {
+
+            }
+
+
+        })
+
+    </script>
+</body>
+
+</html>
