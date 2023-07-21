@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .col-1-3 {
+            flex: 0 0 17%;
+
+        }
+
+        .col-12 {
+            flex: 0 0 100%;
+        }
+
+        .game {
+            height: 100vh;
+        }
+
+        .b1,
+        .b2,
+        .b3,
+        .b3,
+        .b4,
+        .b5,
+        .b6,
+        .b7,
+        .b8,
+        .b9 {
+            border: 1px solid violet;
+            outline: 1px solid violet;
+            width: 70%;
+            height: 70px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 40px;
+        }
+
+        .head {
+            padding-top: 0px;
+            font-size: 40px;
+        }
+
+        .game-name {
+            font-size: 50px;
+            padding-bottom: 20px;
+            color: brown;
+        }
+
+        .start {
+            font-size: 25px;
+            padding-bottom: 5px;
+        }
+
+        .player-1 {
+            font-size: 20px;
+            padding-bottom: 5px;
+        }
+
+        .player-2 {
+            font-size: 20px;
+            padding-bottom: 20px;
+        }
+
+        .reset {
+            padding-top: 20px;
+        }
+
+        .reset>button {
+            font-size: 20px;
+            padding: 5px 15px 5px 15px;
+            cursor: pointer;
+            background-color: dimgray;
+            color: white;
+            outline: none;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .reset>button:hover {
+            box-shadow: 0 0 10px #9ecaed;
+            border: 1px solid lawngreen;
+        }
+
+        .won {
+            font-size: 20px;
+            padding-top: 20px;
+        }
+
+        /* Extra small devices (phones, 600px and down) */
+        @media only screen and (max-width: 600px) {
+            .col-sm-12 {
+                flex: 0 0 100%;
+            }
+
+            .p-t {
+                padding-top: 30px;
+            }
+        }
+
+        /* Small devices (portrait tablets and large phones, 600px and up) */
+        @media only screen and (min-width: 600px) {
+            .max {
+                justify-content: center;
+                background-color: beige;
+            }
+
+            .col-md-7 {
+                flex: 0 0 58.33%;
+            }
+
+            .p-top {
+                padding-top: 30px;
+            }
+        }
+
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (min-width: 768px) {}
+
+        /* Large devices (laptops/desktops, 992px and up) */
+        @media only screen and (min-width: 992px) {
+            .large {
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .col-5 {
+                flex: 0 0 50%;
+            }
+        }
+
+        /* Extra large devices (large laptops and desktops, 1200px and up) */
+        @media only screen and (min-width: 1200px) {}
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-12">
+            <div class="row max game">
+                <div class="col-5 col-sm-12 col-md-7 p-t large">
+                    <div class="row justify-center game-name p-top">
+                        Tic Tac Toe
+                    </div>
+                    <div class="row justify-center start">
+                        Game start at tab to the Box
+                    </div>
+                    <div class="row justify-center player-1">
+                        1st player x
+                    </div>
+                    <div class="row justify-center player-2">
+                        2nd player 0
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row justify-center">
+                                <input type="text" class="col-1-3 p-auto b1 text-center" id="b1" readonly>
+                                <input type="text" class="col-1-3 p-auto b2 text-center" id="b2" readonly>
+                                <input type="text" class="col-1-3 p-auto b3 text-center" id="b3" readonly>
+                            </div>
+                            <div class="row justify-center">
+                                <input type="text" class="col-1-3 p-auto b4 text-center" id="b4" readonly>
+                                <input type="text" class="col-1-3 p-auto b5 text-center" id="b5" readonly>
+                                <input type="text" class="col-1-3 p-auto b6 text-center" id="b6" readonly>
+                            </div>
+                            <div class="row justify-center">
+                                <input type="text" class="col-1-3 p-auto b7 text-center" id="b7" readonly>
+                                <input type="text" class="col-1-3 p-auto b8 text-center" id="b8" readonly>
+                                <input type="text" class="col-1-3 p-auto b9 text-center" id="b9" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-center reset">
+                        <button type="button" id="reset">Reset</button>
+                    </div>
+                    <div class="row justify-center won" id="winner">
+                        Who won !
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- script -->
+
+    <script>
+
+        $(document).ready(function () {
+            function winner() {
+                var b1 = $("#b1").val();
+                var b2 = $("#b2").val();
+                var b3 = $("#b3").val();
+                var b4 = $("#b4").val();
+                var b5 = $("#b5").val();
+                var b6 = $("#b6").val();
+                var b7 = $("#b7").val();
+                var b8 = $("#b8").val();
+                var b9 = $("#b9").val();
+
+                if ((b1 == "x" || b1 == "X") && (b2 == "x" || b2 == "X") && (b3 == "x" || b3 == "X")) {
+                    $("#winner").html("Player x won");
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b5").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    $("#b9").attr('disabled', 'disabled');
+                    alert("Player x won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b4 == "x" || b4 == "X") && (b5 == "x" || b5 == "X") && (b6 == "x" || b6 == "X")) {
+                    $("#winner").text("Player x won");
+                    $("#b1").attr('disabled', 'disabled');
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    $("#b9").attr('disabled', 'disabled');
+                    alert("Player x won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b7 == "x" || b7 == "X") && (b8 == "x" || b8 == "X") && (b9 == "x" || b9 == "X")) {
+                    $("#winner").html("Player x won");
+                    $("#b1").attr('disabled', 'disabled');
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b5").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    alert("Player x won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b1 == "x" || b1 == "X") && (b4 == "x" || b4 == "X") && (b7 == "x" || b7 == "X")) {
+                    $("#winner").html("Player x won");
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#b5").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    $("#b9").attr('disabled', 'disabled');
+                    alert("Player x won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b2 == "x" || b2 == "X") && (b5 == "x" || b5 == "X") && (b8 == "x" || b8 == "X")) {
+                    $("#winner").html("Player x won");
+                    $("#b1").attr('disabled', 'disabled');
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#b9").attr('disabled', 'disabled');
+                    alert("Player x won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b3 == "x" || b3 == "X") && (b6 == "x" || b6 == "X") && (b9 == "x" || b9 == "X")) {
+                    $("#winner").html("Player x won");
+                    $("#b1").attr('disabled', 'disabled');
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b5").attr('disabled', 'disabled');
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    alert("Player x won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b1 == "x" || b1 == "X") && (b5 == "x" || b5 == "X") && (b9 == "x" || b9 == "X")) {
+
+                    $("#winner").html("Player  x won");
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    alert("Player x won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b3 == "x" || b3 == "X") && (b5 == "x" || b5 == "X") && (b7 == "x" || b7 == "X")) {
+                    $("#winner").html("Player x won");
+                    $("#b1").attr('disabled', 'disabled');
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    $("#b9").attr('disabled', 'disabled');
+                    alert("Player x won")
+                    alert("Tab to Reset button and play again !")
+                }
+
+
+                if ((b1 == "0") && (b2 == "0") && (b3 == "0")) {
+                    $("#winner").html("Player 0 won");
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b5").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    $("#b9").attr('disabled', 'disabled');
+                    alert("Player 0 won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b4 == "0") && (b5 == "0") && (b6 == "0")) {
+                    $("#winner").html("Player 0 won");
+                    $("#b1").attr('disabled', 'disabled');
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    $("#b9").attr('disabled', 'disabled');
+                    alert("Player 0 won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b7 == "0") && (b8 == "0") && (b9 == "0")) {
+                    $("#winner").html("Player 0 won");
+                    $("#b1").attr('disabled', 'disabled');
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b5").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    alert("Player 0 won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b1 == "0") && (b4 == "0") && (b7 == "0")) {
+                    $("#winner").html("Player 0 won");
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#b5").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    $("#b9").attr('disabled', 'disabled');
+                    alert("Player 0 won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b2 == "0") && (b5 == "0") && (b8 == "0")) {
+                    $("#winner").html("Player 0 won");
+                    $("#b1").attr('disabled', 'disabled');
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#b9").attr('disabled', 'disabled');
+                    alert("Player 0 won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b3 == "0") && (b6 == "0") && (b9 == "0")) {
+                    $("#winner").html("Player 0 won");
+                    $("#b1").attr('disabled', 'disabled');
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b5").attr('disabled', 'disabled');
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    alert("Player 0 won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b1 == "0") && (b5 == "0") && (b9 == "0")) {
+                    $("#winner").html("Player 0 won");
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    alert("Player 0 won")
+                    alert("Tab to Reset button and play again !")
+                }
+                if ((b3 == "0") && (b5 == "0") && (b7 == "0")) {
+                    $("#winner").html("Player 0 won");
+                    $("#b1").attr('disabled', 'disabled');
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#b8").attr('disabled', 'disabled');
+                    $("#b9").attr('disabled', 'disabled');
+                    alert("Player 0 won")
+                    alert("Tab to Reset button and play again !")
+                }
+                else {
+                    if ((b1 == 'X' || b1 == '0') && (b2 == 'X'
+                        || b2 == '0') && (b3 == 'X' || b3 == '0') &&
+                        (b4 == 'X' || b4 == '0') && (b5 == 'X' ||
+                            b5 == '0') && (b6 == 'X' || b6 == '0') &&
+                        (b7 == 'X' || b7 == '0') && (b8 == 'X' ||
+                            b8 == '0') && (b9 == 'X' || b9 == '0')) {
+                        $("#winner").html("Match Tie");
+
+                        window.alert('Match Tie');
+                    }
+
+
+                }
+            }
+
+            $("#reset").on("click", function () {
+                location.reload();
+                $("#b1").val("");
+                $("#b2").val("");
+                $("#b3").val("");
+                $("#b4").val("");
+                $("#b5").val("");
+                $("#b6").val("");
+                $("#b7").val("");
+                $("#b8").val("");
+                $("#b9").val("");
+            })
+
+
+            $("#b1").on("click", function () {
+                userClick1();
+                winner();
+            })
+            $("#b2").on("click", function () {
+                userClick2();
+                winner();
+            })
+            $("#b3").on("click", function () {
+                userClick3();
+                winner();
+            })
+            $("#b4").on("click", function () {
+                userClick4();
+                winner();
+            })
+            $("#b5").on("click", function () {
+                userClick5();
+                winner();
+            })
+            $("#b6").on("click", function () {
+                userClick6();
+                winner();
+            })
+            $("#b7").on("click", function () {
+                userClick7();
+                winner();
+            })
+            $("#b8").on("click", function () {
+                userClick8();
+                winner();
+            })
+            $("#b9").on("click", function () {
+                userClick9();
+                winner();
+            })
+
+            flag = 1;
+
+            function userClick1() {
+                if (flag == 1) {
+                    $("#b1").val("X");
+                    $("#b1").attr('disabled', "disabled");
+                    $("#winner").html("player 0 turn");
+                    flag = 0;
+                }
+                else {
+                    $("#b1").val("0");
+                    $("#b1").attr('disabled', "disabled");
+                    $("#winner").html("player x turn");
+                    flag = 1;
+                }
+            }
+
+            function userClick2() {
+                if (flag == 1) {
+                    $("#b2").val("X");
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#winner").html("player 0 turn");
+                    flag = 0;
+                }
+                else {
+                    $("#b2").val("0");
+                    $("#b2").attr('disabled', 'disabled');
+                    $("#winner").html("player x turn");
+                    flag = 1;
+                }
+            }
+            function userClick3() {
+                if (flag == 1) {
+                    $("#b3").val("X");
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#winner").html("player 0 turn");
+                    flag = 0;
+                }
+                else {
+                    $("#b3").val("0");
+                    $("#b3").attr('disabled', 'disabled');
+                    $("#winner").html("player x turn");
+                    flag = 1;
+                }
+            }
+            function userClick4() {
+                if (flag == 1) {
+                    $("#b4").val("X");
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#winner").html("player 0 turn");
+                    flag = 0;
+                }
+                else {
+                    $("#b4").val("0");
+                    $("#b4").attr('disabled', 'disabled');
+                    $("#winner").html("player x turn");
+                    flag = 1;
+                }
+            }
+            function userClick5() {
+                if (flag == 1) {
+                    $("#b5").val("X");
+                    $("#b5").attr('disabled', 'disabled');
+                    $("#winner").html("player 0 turn");
+                    flag = 0;
+                }
+                else {
+                    $("#b5").val("0");
+                    $("#b5").attr('disabled', 'disabled');
+                    $("#winner").html("player x turn");
+                    flag = 1;
+                }
+            }
+            function userClick6() {
+                if (flag == 1) {
+                    $("#b6").val("X");
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#winner").html("player 0 turn")
+                    flag = 0;
+                }
+                else {
+                    $("#b6").val("0");
+                    $("#b6").attr('disabled', 'disabled');
+                    $("#winner").html("player x turn");
+                    flag = 1;
+                }
+            }
+            function userClick7() {
+                if (flag == 1) {
+                    $("#b7").val("X");
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#winner").html("player 0 turn")
+                    flag = 0;
+                }
+                else {
+                    $("#b7").val("0");
+                    $("#b7").attr('disabled', 'disabled');
+                    $("#winner").html("player x turn");
+                    flag = 1;
+                }
+            }
+            function userClick8() {
+                if (flag == 1) {
+                    $("#b8").val("X");
+                    $("#b8").attr('disabled', 'disabled');
+                    $("#winner").html("player 0 turn");
+                    flag = 0;
+                }
+                else {
+                    $("#b8").val("0");
+                    $("#b8").attr('disabled', 'disabled');
+                    $("#winner").html("player x turn");
+                    flag = 1;
+                }
+            }
+            function userClick9() {
+                if (flag == 1) {
+                    $("#b9").val("X");
+                    $("#b9").attr('disabled', 'disabled');
+                    $("#winner").html("player 0 turn");
+                    flag = 0;
+                }
+                else {
+                    $("#b9").val("0");
+                    $("#b9").attr('disabled', 'disabled');
+                    $("#winner").html("player x turn");
+                    flag = 1;
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
